@@ -1,3 +1,4 @@
+import { act } from '@testing-library/react'
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
@@ -25,6 +26,30 @@ const products_reducer = (state, action) => {
     }
   }
 
+  if (action.type === GET_PRODUCTS_BEGIN) {
+    return {
+      ...state,
+      products_loading: true
+    }
+  }
+
+  if (action.type === GET_PRODUCTS_SUCCESS) {
+    const featuredProducts = action.payload.products.filter(product => product.featured);
+    return {
+      ...state,
+      products: action.payload.products,
+      featured_products: featuredProducts,
+      products_loading: false
+    }
+  }
+
+  if (action.type === GET_PRODUCTS_ERROR) {
+    return {
+      ...state,
+      products_error: true,
+      products_loading: false
+    }
+  }
 
   return state
   throw new Error(`No Matching "${action.type}" - action type`)
