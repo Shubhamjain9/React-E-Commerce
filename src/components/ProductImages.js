@@ -8,7 +8,7 @@ const ProductImages = ({ images = [{ url: '' }] }) => {
     <img src={main.url} alt="main_img" className="main" />
     <div className="gallery">
       {images.map((image, index) => {
-        const { id, url, filename: name } = image;
+        const { url, filename: name } = image;
         return <img
           key={index}
           src={url}

@@ -1,4 +1,3 @@
-import { act } from '@testing-library/react';
 import {
   ADD_TO_CART,
   CLEAR_CART,
@@ -6,7 +5,7 @@ import {
   REMOVE_CART_ITEM,
   TOGGLE_CART_ITEM_AMOUNT,
 } from '../actions'
-import { AddToCart } from '../components'
+
 
 const cart_reducer = (state, action) => {
 
@@ -92,9 +91,8 @@ const cart_reducer = (state, action) => {
             amount: newAmount
           }
         }
-      } else {
-        return item;
       }
+      return item;
     })
 
     return {
@@ -123,10 +121,7 @@ const cart_reducer = (state, action) => {
 
   }
 
-  // if(action.type ===CL)
-
   return state
-  throw new Error(`No Matching "${action.type}" - action type`)
 }
 
 export default cart_reducer

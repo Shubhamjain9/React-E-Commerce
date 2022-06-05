@@ -54,7 +54,6 @@ export const FilterProvider = ({ children }) => {
   }
 
   const updateSort = (evt) => {
-    const name = evt.target.name;
     const value = evt.target.value;
     dispatch({ type: UPDATE_SORT, payload: { sort: value } })
   }
@@ -92,7 +91,6 @@ export const FilterProvider = ({ children }) => {
       updateSort,
       clearFilters,
       updateFilters
-
     }}>
       {children}
     </FilterContext.Provider>
